@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+@theme {
+  --font-noto-sans: "Noto Sans", sans-serif;
+
+  --color-dark-blue: #001524;
+  --color-forest-green: #445d48;
+  --color-gold: #d6cc99;
+  --color-cream: #fde5d4;
+  --color-accent: #ff6b35;
+  --color-light-gray: #f8f9fa;
+}
+
+@layer components {
+  .stars {
+    @apply fixed top-0 left-0 w-full h-full pointer-events-none;
+  }
+
+  .star {
+    @apply absolute w-[2px] h-[2px] rounded-full bg-gold;
+    animation: var(--animate-twinkle);
+  }
+
+  .gradient-bg {
+    background: linear-gradient(-45deg, #001524, #445d48, #001524, #445d48);
+    background-size: 400% 400%;
+    animation: var(--animate-gradient);
+  }
+
+  .humburger-line {
+    @apply w-[25px] h-[1.5px] bg-gold block my-2;
+  }
+
+  .humburger-active > span:nth-child(1) {
+    @apply rotate-45;
+  }
+  .humburger-active > span:nth-child(3) {
+    @apply -rotate-45;
+  }
+  .humburger-active > span:nth-child(2) {
+    @apply opacity-0;
+  }
+}
