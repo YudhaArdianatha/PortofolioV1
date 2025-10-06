@@ -9,6 +9,48 @@
   --color-cream: #fde5d4;
   --color-accent: #ff6b35;
   --color-light-gray: #f8f9fa;
+  --color-camo-green: #445d484d;
+
+  --animate-typing: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+  --animate-twinkle: twinkle 4s infinite;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #d6cc99;
+  }
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 @layer components {
@@ -39,5 +81,52 @@
   }
   .humburger-active > span:nth-child(2) {
     @apply opacity-0;
+  }
+  .skill-card {
+    transition: all 0.3s ease;
+  }
+
+  .skill-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .language-badge {
+    transition: all 0.3s ease;
+  }
+
+  .language-badge:hover {
+    transform: scale(1.05);
+  }
+
+  .typing-text {
+    @apply overflow-hidden border-r-[3px] border-gold whitespace-nowrap mx-auto tracking-wider;
+    animation: var(--animate-typing);
+  }
+
+  .scroll-reveal {
+    @apply opacity-0 translate-y-12 transition-all duration-700 ease-out;
+  }
+
+  .scroll-reveal.revealed {
+    @apply opacity-100 translate-y-0;
+  }
+
+  .animate-slide {
+    display: flex;
+    width: 200%;
+    animation: slide 75s linear infinite;
+  }
+
+  .slide-track img {
+    height: 48px;
+    width: auto;
+    margin: 0 2rem;
+    filter: grayscale(0.1);
+    transition: transform 0.3s ease;
+  }
+
+  .slide-track img:hover {
+    transform: scale(1.1);
+    filter: grayscale(0);
   }
 }
